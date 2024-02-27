@@ -1,0 +1,39 @@
+//Estilo do Botão
+.button{
+    max-width: 600px;
+    height: 45px;
+    border: 0;
+    border-radius: 1rem;
+    background-color: var(--whiteD);
+    padding: 1rem;
+    margin: 1rem;
+    
+ 
+//quando nosso botão estiver disabled(que recebe o loading) o nosso icone vai ficar girando
+&[disabled]{
+    // coloca um cursor disabilitado 
+    cursor: not-allowed;
+    // svg é o icone do spinner
+    svg{
+        animation: animate 2s infinite;
+    }
+}
+
+ //Muda a cor do botão quando nós passamos o mouse por cima
+    &:hover{
+        filter:brightness(1.08)
+    }
+}
+
+.buttonText{
+    color: var(--gray2);
+}
+// animação do icone de loading, da posição 0 até a 360(girar 360 graus)
+@keyframes animate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

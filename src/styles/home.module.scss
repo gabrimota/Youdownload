@@ -1,0 +1,82 @@
+
+// aqui é o style do .containerCenter
+.containerCenter{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var();
+}
+ .HeaderContainer{
+  background-color: red;
+  padding: 10px;
+  text-align: center;
+  color: white;
+ }
+// Aqui é o style do .login
+.login{
+  margin-top: -300px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+
+  form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+  }
+
+  form button{
+    height: 50px;
+    font-size: 1.2rem;
+    width: 200px;
+  
+  
+    
+    // encontrar uma maneira de alinhar o button no centro
+  }
+  form buttonlogin{
+    height: 50px;
+    font-size: 1.2rem;
+    width: 200px;
+    color: black;
+    
+  }
+}
+
+  .text{
+    margin-top: 1rem;
+    color: var(--whiteD);
+    cursor: pointer
+  }
+
+  //aplica responsividade na tela de login
+  @media (max-width: 620px){
+    .login{
+      width: 90%;
+      height: 100%;
+    }
+  }
+
+  @media (max-width:620px){
+    .headerLogin{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media (max-width:620px){
+    .footerLogin{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  

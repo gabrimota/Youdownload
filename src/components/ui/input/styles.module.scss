@@ -1,0 +1,19 @@
+
+// página scss feita para index.tsx da pasta input
+// estilo do campo de texto
+.input{
+    margin-bottom: 2rem;
+    width: 400px;
+    border: 0;
+    border-radius: 1rem;
+    background-color: var(--whiteD);
+    color: var(--black);
+    padding: 1rem;
+   
+}
+
+// esse é o estilo do placeholder(dica do que se deve escrever no campo)
+.input::placeholder{
+    color: var(--grayA);
+    font-family: 'Times New Roman', Times, serif;
+}

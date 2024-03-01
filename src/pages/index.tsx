@@ -1,6 +1,7 @@
 //import styled from 'styled-components';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 
-import Container from 'react-bootstrap/Container';
+
 //Importamos o componente Head que usamos na linha 19
 import Head from "next/head";
 //Importamos o componente Image que usamos na linha 24
@@ -14,88 +15,106 @@ import iconGoogle from '../../public/iconGoogle.png';
 //Importamos o Input que usamos na linha 28 e 34
 import {Input} from '../components/ui/input';
 
+
 // Importamos o Button que usamos na linha 38
 import { Button } from '../components/ui/button';
 
 // Importamos o Header que usamos na linha 39
 import {Header} from "../components/ui/header";
 
-import { Footer } from '@/components/ui/footer';
+import {BackGround} from "../components/ui/background"
+import download from './download';
 
  // Função do clique nos botões
 const handleSubmit = () => {}
 
 // Página Home
+
 export default function Home() {
   return (
-   <>
-   <Head /*Titulo do site*/>
-    <title> Youdownload - Faça seu login </title>
-   </Head>
-   
-   
-   <div className="container-flex">
-      <Header /* Cabeçalho */>
-      </Header>
-   </div>
-   <div className={styles.containerCenter}>
-   
-   <div className={styles.login}>
-    
-    <form>
-      <Input // campo de E-mail
-        placeholder="E-Mail"
-        type="text"
-      />
+    <>
+      <Head>
+        <title>Youdownload - Faça seu login</title>
+      </Head>
       
-      <Input // campo de senha
-       placeholder="Password"
-       type="password"
-      />
+     
+      
+      
+      <div className='container-flex'>
+     
+      <BackGround>  
+        
+      </BackGround>
+      
+      <Container className={styles.containerCenter}>
+        
+        <div className={styles.login}>
+          
+          <Form>
+            <Input placeholder="E-Mail" type="text" />
+            <Input placeholder="Password" type="password" />
 
-     <div style={{ display: 'flex', flexDirection: 'row' /* adicionamos um display flex e um row para os buttons ficarem um do lado do outro*/}}>
-     <button type="submit" onClick={handleSubmit} style={{ backgroundColor: '#292728', border: 'none', padding: '10px', display: 'flex', alignItems: 'center', /* o type do button é submit(envia dados), quando nós clicamos nele chamamos a função handleSubmit e temos o Style do button */}}>
-        <Image
-          src={iconGoogle} // icone do google
-          alt="Logo do Google" // descrição textual alternativa da imagem(essa descrição é exibida quando a imagem não pode ser carregada).
-          style={{ width: '50px', height: '50px', marginRight: '10px' }}// Style da logo
-        />
-        <a>
-        Entrar com o Google
-        </a>
-      </button>
-    
-      <button type="submit" onClick={handleSubmit} style={{ backgroundColor: '#292728', border: 'none', padding: '10px', display: 'flex', alignItems: 'center'/* o type do button é submit(envia dados), quando nós clicamos nele chamamos a função handleSubmit e temos o Style do button */ }}>
-        <Image
-          src={iconFacebook} // icone do facebook
-          alt="Logo do Facebook" // descrição textual alternativa da imagem(essa descrição é exibida quando a imagem não pode ser carregada).
-          style={{ width: '50px', height: '50px', marginRight: '10px' }}// Style da logo
-        />
-      <a>
-       Entrar com o Facebook 
-       </a>
-      </button>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                style={{
+                  backgroundColor: '#292728',
+                  border: 'none',
+                  padding: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  src={iconGoogle}
+                  alt="Logo do Google"
+                  style={{ width: '50px', height: '50px', marginRight: '10px' }}
+                />
+                Entrar com o Google
+              </Button>
+
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                style={{
+                  backgroundColor: '#292728',
+                  border: 'none',
+                  padding: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  src={iconFacebook}
+                  alt="Logo do Facebook"
+                  style={{ width: '50px', height: '50px', marginRight: '10px' }}
+                />
+                Entrar com o Facebook
+              </Button>
+            </div>
+
+            <Button type="submit" 
+            loading={false} 
+            onClick={() => download()}
+            >
+           
+              Log in
+            </Button>
+          </Form>
+        
+          <a className={styles.text}>Forgot password? </a>
+       
+          <br />
+          <a className={styles.text}>Don't have an account? click here to create </a>
+        </div>
+        
+      </Container>
       </div>
-      <Button // botão de login
-        type="submit"
-        loading={true} //animação dele 
-        >
-        Login
-        </Button>
-      
-     </form>
-     <a className={styles.text}>forgot your password?  </a> 
-     <br />
-     <a className={styles.text}> Don't have an account? click here to create </a>
-  
-    </div>
-   </div>
-    <div className="container-flex">
-    <Footer></Footer>
-    </div>
-   </>
-  ); //
-} 
+    </>
+  );
+}
+
 /*
 <> é um fragment, ele retorna múltiplos elementos 
 

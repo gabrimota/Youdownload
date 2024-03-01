@@ -4,7 +4,7 @@
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-   
+    height: auto;
 }
 
  // cores do site
@@ -39,6 +39,7 @@ a{
 body{
      // cor de fundo
     background: var(--gray2);
+    overflow: hidden;
    
 }
 body,input,textarea,select,button{

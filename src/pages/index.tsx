@@ -1,7 +1,9 @@
+import {FormEvent, useContext} from 'react'
+import React, { ChangeEvent, useState } from 'react';
 //import styled from 'styled-components';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 
-
+import Link from 'next/link';
 //Importamos o componente Head que usamos na linha 19
 import Head from "next/head";
 //Importamos o componente Image que usamos na linha 24
@@ -14,31 +16,46 @@ import iconGoogle from '../../public/iconGoogle.png';
 
 //Importamos o Input que usamos na linha 28 e 34
 import {Input} from '../components/ui/input';
-
-
 // Importamos o Button que usamos na linha 38
 import { Button } from '../components/ui/button';
-
-// Importamos o Header que usamos na linha 39
-import {Header} from "../components/ui/header";
-
 import {BackGround} from "../components/ui/background"
-import download from './download';
+
+import {AuthContext} from "../contexts/AuthContext"
+
+
 
  // Função do clique nos botões
-const handleSubmit = () => {}
 
 // Página Home
 
 export default function Home() {
-  return (
-    <>
+
+      function ButtonLoginGoogle(){
+        return alert("Login Google")
+      }
+      function ButtonLoginFacebook(){
+        return alert("Login Facebook")
+      }
+      const [Email, setEmail] = useState('');
+      const [password, setpassword] = useState('');
+      //const [password2] = useState('peido');
+
+      function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+       
+        if (Email === '' || password === '') {
+          alert("Digite nos campos obrigatorios");
+          e.preventDefault();
+        } else {
+          alert(`Email: ${Email} Senha: ${password}`);
+        }
+      }
+      
+    
+      return (
+      <>
       <Head>
         <title>Youdownload - Faça seu login</title>
       </Head>
-      
-     
-      
       
       <div className='container-flex'>
      
@@ -50,63 +67,38 @@ export default function Home() {
         
         <div className={styles.login}>
           
-          <Form>
-            <Input placeholder="E-Mail" type="text" />
-            <Input placeholder="Password" type="password" />
-
+          <Form onSubmit={handleLogin}>
+            <Input placeholder="E-Mail" type="text" value={Email} onChange={ (e) => setEmail(e.target.value)} />
+            <Input placeholder="Password" type="password" value={password} onChange={ (e) => setpassword(e.target.value)} />
+            
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <Button
-                type="submit"
-                onClick={handleSubmit}
-                style={{
-                  backgroundColor: '#292728',
-                  border: 'none',
-                  padding: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Image
-                  src={iconGoogle}
-                  alt="Logo do Google"
-                  style={{ width: '50px', height: '50px', marginRight: '10px' }}
-                />
-                Entrar com o Google
+              <Button type='reset' onClick={ButtonLoginGoogle} style={{ backgroundColor: '#292728', width:'50px' , height: '30px', marginLeft:'-1%',marginRight: '25px',border: 'none', padding: '10px', display: 'flex', alignItems: 'center',}}>
+                <Image src={iconGoogle}  alt="Logo do Google"  style={{ width: '50px', height: '50px', marginRight: '10px' }}/>
               </Button>
-
-              <Button
-                type="submit"
-                onClick={handleSubmit}
-                style={{
-                  backgroundColor: '#292728',
-                  border: 'none',
-                  padding: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Image
-                  src={iconFacebook}
-                  alt="Logo do Facebook"
-                  style={{ width: '50px', height: '50px', marginRight: '10px' }}
-                />
-                Entrar com o Facebook
-              </Button>
+            <Button type='reset' onClick={ButtonLoginFacebook} style={{  backgroundColor: '#292728', width:'50px' , height: '30px', border: 'none',  padding: '10px',  display: 'flex',   alignItems: 'center'}}>
+              <Image src={iconFacebook}  alt="Logo do Facebook"  style={{ width: '50px', height: '50px', marginRight: '10px' }}/>
+            </Button>
             </div>
-
-            <Button type="submit" 
-            loading={false} 
-            onClick={() => download()}
-            >
-           
+            <Button type="submit"  loading={false} style={{ height: "50px", fontSize:"1.2rem", width: "200px", color:"black"}} >
               Log in
             </Button>
           </Form>
         
-          <a className={styles.text}>Forgot password? </a>
-       
+            
+           
+
+           
+          
+
+
+          
+          <Link href="" style={{marginTop:"1rem", color: "var(--whiteD)", cursor: "pointer", fontSize:"15px"}} onClick={() => alert("Forgot Password")}>
+          Forgot password? 
+          </Link>
           <br />
-          <a className={styles.text}>Don't have an account? click here to create </a>
+          <Link href="" style={{marginTop:"1rem", color: "var(--whiteD)", cursor: "pointer" , fontSize:"15px"}} onClick={() => alert("click here to create ")}>
+           Don't have an account? click here to create 
+           </Link>
         </div>
         
       </Container>
@@ -132,4 +124,6 @@ input placeholder(placeholder é uma dica do que se tem que escrever),
 
 Button é o botão de acessar, o tipo dele é submit(envia dados) e o loading é o icone 
 de carregamento
+
+Link são os textos que levam para outras páginas como cadastro e esqueci a senha
 */

@@ -6,10 +6,18 @@ import '../styles/App.scss'
 import '../styles/globals.scss'
 // immportamos o AppProps
 import type { AppProps } from "next/app";
+
+import { AuthProvider} from "../contexts/AuthContext" 
 // pageProps pega todas as propriedades das paginas 
  function App({ Component, pageProps }: AppProps) {
 // aqui é renderizado a pag que está sendo chamada (quando nos entramos na home, cadastro, login)
-  return <Component {...pageProps} />;
+  return( 
+   
+    <Component {...pageProps} />
+   
+    )
+  
+ 
 }
 // exportamos o App
 export default App

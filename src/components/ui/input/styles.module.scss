@@ -4,10 +4,10 @@
 .input{
     margin-bottom: 2rem;
     width: 400px;
-    height: -400px;
+    height: 60px;
     border: 0;
     border-radius: 1rem;
-    background-color: var(--whiteD);
+    background-color: var(--whitef);
     color: var(--black);
     padding: 1rem;
    
@@ -15,6 +15,7 @@
 
 // esse é o estilo do placeholder(dica do que se deve escrever no campo)
 .input::placeholder{
+    font-size: 25px;
     color: var(--grayA);
     font-family: 'Times New Roman', Times, serif;
 }

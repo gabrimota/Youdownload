@@ -9,12 +9,13 @@ export function BackGround() {
       <Col className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
         <div>
         <img
-          src="bgbom.png"
-          alt="Sua Imagem"
+          src="LogoBackBoa2.png"
+          alt="BackGround"
           className="img-fluid"
           style={{
             maxHeight: '100%',
             maxWidth: '100%', 
+            
           }}
         />
         </div>

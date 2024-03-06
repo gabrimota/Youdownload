@@ -4,9 +4,10 @@
     height: 45px;
     border: 0;
     border-radius: 1rem;
-    background-color: var(--whiteD);
+    background-color:#FF3F4B;
     padding: 1rem;
     margin: 1rem;
+    color: white;
     
  
 //quando nosso botão estiver disabled(que recebe o loading) o nosso icone vai ficar girando
@@ -19,15 +20,17 @@
     }
 }
 
+
  //Muda a cor do botão quando nós passamos o mouse por cima
     &:hover{
-        filter:brightness(1.08)
+        transition: background-color 1s, color 1s, filter 1s;
+        background-color: white;
+        color: #FF3F4B;
+        filter: brightness(1.08);
     }
 }
 
-.buttonText{
-    color: var(--gray2);
-}
+
 // animação do icone de loading, da posição 0 até a 360(girar 360 graus)
 @keyframes animate{
     from{

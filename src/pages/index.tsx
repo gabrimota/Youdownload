@@ -90,7 +90,7 @@ export default function Home() {
           {/* Formulário que chama a função handleLogin ao ser chamado */}
           <Form onSubmit={handleLogin}>
             {/* As Duas entradas De Texto */}
-            <Input placeholder="E-Mail" type="text" value={Email} onChange={ (e) => setEmail(e.target.value)} /*OnChange chama uma função que muda o valor da var Email pelo oq foi digitado no campo é o setEmailque faz isso *//>
+            <Input placeholder="E-Mail" type="text" value={Email} onChange={ (e) => setEmail(e.target.value)} /*OnChange chama uma função que muda o valor da var Email pelo oq foi digitado no campo, é o setEmail que faz isso *//>
             <Input placeholder="Password" type="password" value={password} onChange={ (e) => setpassword(e.target.value)} />
             {/* Uma div para configurar a Direção dos dois Buttons Google Facebook */}
             <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -105,7 +105,7 @@ export default function Home() {
                }}
               onClick={() => ButtonLoginGoogle()}
               />
-           
+           {/* Botão do faceBook */}
             <FaFacebook
             type='submit'
             style={{
@@ -115,7 +115,7 @@ export default function Home() {
               marginBottom: '10px',
               color:'#1C96EB',
               backgroundColor:'white',
-              borderRadius:'100%'
+              borderRadius:'50%'
             }}
             onClick={() => ButtonLoginFacebook()}
             />

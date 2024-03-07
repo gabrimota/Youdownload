@@ -76,7 +76,7 @@ export default function ForgotPassWord() {
           color:"white", 
           fontSize:"50px",
            fontFamily:"Times New Roman" }}> 
-            Recupere Sua Senha
+            Recover Your Password
             </h3>
         <div className={styles.login}>
            
@@ -90,27 +90,20 @@ export default function ForgotPassWord() {
             value={Email}
             onChange={(e) => setEmail(e.target.value)}
             />
-            
+          
             <Button 
             type="submit" 
              loading={false}
               style={{ 
                 height: "60px", 
                 fontSize:"1.5rem", 
-               
                }}
                  >
              Send
             </Button>
-
-         </Form>
-          
+         </Form> 
         </div>
-        
       </Container>
-     
- 
- 
   </>
   );
 }

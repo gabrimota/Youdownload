@@ -22,16 +22,12 @@ import { FaEyeSlash } from "react-icons/fa6";
 
 export default function RegisterAccount() {
   <RoutesApp/>
-     
-  // i = "Gabriel Bomfim Mota da Silva";
-  // i = ["Gabriel","Bomfim", "Mota", "da", "Silva"]
-     
-      // função que é chamado quando aperto no Botão Facebook
-      function ButtonRegisterExit(){
-        return Router.push('/');
-      }
+      
+      
+      
       // a variavel Email recebe os valores do input, setEmail é uma instancia do useState(ele verifica a varivel Email)
       const [FullName, setFullName] = useState('');
+     // a variavel Email recebe os valores do input, setEmail é uma instancia do useState(ele verifica a varivel Email)
       const [Email, setEmail] = useState('');
       const [Password, setPassword] = useState('');
       const [Confirmpassword, setConfirmpassword] = useState('');
@@ -39,33 +35,78 @@ export default function RegisterAccount() {
       const [ShowConfirmpassword, setShowConfirmpassword] = useState(false);
       //const [password2] = useState('peido');
       // essa função é chamado quando apertamos o button de log in
-      function Register(e: React.FormEvent<HTMLFormElement>) /* e:React.FormEvent previne o envio do formulario caso o usuario não preencha os campos obrigatorios*/  {
+       /* e:React.FormEvent previne o envio do formulario caso o usuario não preencha os campos obrigatorios*/  
+      function Register(e: React.FormEvent<HTMLFormElement>){
+       // Variavel que recebe o nome digitado no input
         const nome = FullName;
+       // indexOf verifica se tem espaço no que foi escrito pelo Usuario se tiver ele retorna 0 ou um número maior se não retorna -1
+       //atribuimos isso ao FirstSpace
         const FirstSpace = nome.indexOf(" ");
-        //verifica se tem algo escrito nós dois campos
-        if (FullName === ' ' ||Email === '' || Password === '') {
-          alert("Digite nos campos obrigatorios");
-          e.preventDefault();
-        } else if( FirstSpace !== -1 || Password !== Confirmpassword ){
-          e.preventDefault();
-          const PrimeiroNome = nome.substring(0, FirstSpace);
-          setFullName(PrimeiroNome);
-          alert(`Nome:${PrimeiroNome}  Email:${Email}  Senha:${Password}`);
-          //Router.push("/Download");
-        } 
-         else{
-          e.preventDefault();
-          alert("Senhas diferentes");
-        }
-      } 
+        //verifica se tem algo escrito nos campos
+        e.preventDefault();
+        if (FullName === '' || FullName === ' ' ||Email === '' || Password === '' || Confirmpassword === '') {
+          if(FullName === ''){
+            alert("Digite seu nome completo")
+          }  if(FullName === ' '){
+            alert("Digite seu nome completo")}
+          if(Email === ''){
+            alert("Digite seu Email")
+          }  if(Email === ' '){
+            alert("Digite seu Email")}
+          if(Password === ''){
+            alert("Digite sua Password")
+          } if(Password === ' '){
+            alert("Digite seu Password")}
+          if(Confirmpassword === ''){
+            alert("Digite seu Confirmpassword")
+          }  if(Confirmpassword === ' '){
+            alert("Digite seu Confirmpassword")}
+          // serve para previnir a atualização da pagina
+         
+          return
+        }  
+        
+         if(Password === Confirmpassword ){
+          alert("Registrado");
+         
+          Router.push("/Download")
+         } 
+          else{
+           alert("Senhas diferentes");
+          
+           return
+         } // verifica se o espaço foi encontrado caso não seja encontrado o indexOf retorna -1, caso ele encontre ele retorna um número maior ou igual a zero
+         
+        if( FirstSpace !== -1){
+          // substring serve serve para extrair tudo que foi escrito antes do primeiro espaço, 0 é a posição que seria o primeiro espaço e FirstSpace seria o espaço
+          const nomeAntesDoEspaco = nome.substring(0, FirstSpace);
+          setFullName(nomeAntesDoEspaco);
+          
+          alert(`Nome: ${nomeAntesDoEspaco}  Email: ${Email}  Senha: ${Password}`);
+          
 
+        }  // verifica se não tiver espaço envia apenas o nome que foi escrito , fiz isso pq ele n mostrava o nome caso não tivesse espaço
+         else if(FirstSpace === -1){
+          alert(`Nome: ${FullName}  Email: ${Email}  Senha: ${Password}`);
+         
+        }  
+      } 
+      // Função que é chamada para mudar o valor booleano do Showpassword
       function ShowpasswordClick(){
-        //!Showpassword
+        
+        //Muda o estado da variavel usando o operador de negação ("!") , de false ele vai para true
         setShowpassword(!Showpassword);
       }
+      // Função que é chamada para mudar o valor booleano do ShowConfirmpassword
       function ShowConfirmpasswordClick(){
-        //!Showpassword
+        
+        //Muda o estado da variavel usando o operador de negação ("!") , de false ele vai para true
         setShowConfirmpassword(!ShowConfirmpassword);
+      }
+      // função que é chamado quando clicamos no botão de sair da pagina
+      function ButtonRegisterExit(){
+        //solicita a navegação para a rota Home
+        return Router.push('/');
       }
   return (
   <>

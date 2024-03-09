@@ -40,11 +40,12 @@ export default function ForgotPassWord() {
       // essa função é chamado quando apertamos o button de Send
       function Register(e: React.FormEvent<HTMLFormElement>) /* e:React.FormEvent previne o envio do formulario caso o usuario não preencha os campos obrigatorios*/  {
         //verifica se tem algo escrito no campo
+        e.preventDefault();
         if (Email === '' ) {
           alert("Digite nos campos obrigatorios");
-          e.preventDefault();
+         
         } else {
-          e.preventDefault();
+         
           alert("See your Email")
           
         }

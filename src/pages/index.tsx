@@ -60,11 +60,10 @@ export default function Home() {
       // essa função é chamado quando apertamos o button de log in
       function handleLogin(e: React.FormEvent<HTMLFormElement>) /* e ou event:React.FormEvent previne o envio do formulario caso o usuario não preencha os campos obrigatorios*/  {
         //verifica se tem algo escrito nós dois campos , se tiver algo escrito nos dois campos o usuario é redirecionado p pag de Download
+        e.preventDefault();
         if (Email === '' || password === '') {
           alert("Digite nos campos obrigatorios");
-          e.preventDefault();
         } else {
-          e.preventDefault();
           Router.push('/Download');
        
         }

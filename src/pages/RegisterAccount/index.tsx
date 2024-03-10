@@ -1,8 +1,9 @@
-import { Container,  Form} from 'react-bootstrap';
+import { Container,  Form , Row , Col} from 'react-bootstrap';
 import React, {  useState } from 'react';
 import RoutesApp from '@/routes'
 import Router from 'next/router'
 import Head from "next/head";
+
 //Importamos o style de home
 import styles from '@/pages/RegisterAccount/register.module.scss'
 //import styles from '../../styles/home.module.scss';
@@ -126,7 +127,7 @@ export default function RegisterAccount() {
        {/* Imagem de Background */}
       <BackGround/>  
 
-      <Container className={styles.containerCenter}>
+      <Container fluid="md" className={styles.containerCenter}>
        {/* Texto Grande */}
         <h3 style={{
           height:"100px", 
@@ -157,6 +158,7 @@ export default function RegisterAccount() {
             onChange={(e) => setEmail(e.target.value)}
             />
           {/* Entrada de Texto Password */}
+         
           <Input 
             placeholder="Password"
             type={Showpassword ? 'text' : 'password'}
@@ -192,6 +194,7 @@ export default function RegisterAccount() {
               onClick={() => alert("Register Google")}
               />
            {/* Botão de login Facebook */}
+           
             <FaFacebook
             type='submit'
             style={{
@@ -218,15 +221,17 @@ export default function RegisterAccount() {
              Register
             </Button>
          </Form>
+         
          <button
               style={{
-              position: 'absolute',
+              position: 'fixed',
               right: '42%',
               bottom: '39.5%',
               border: 'none',
+              transform: 'translateY(-50%)',
               background: 'none',
               cursor: 'pointer',
-              color: '#292728',
+              color: "white", //'#292728'
               height: "20px",
               width:"10px",
                }}
@@ -237,28 +242,33 @@ export default function RegisterAccount() {
                 <IoEyeOffSharp style={{width:"30px", height:"30px"}} />}
              </button>
 
-             <button
+             <button className=" align-items-center justify-content-center"
               style={{
-              position: 'absolute',
+              position:'absolute',
               right: '42%',
               bottom: '29%',
               border: 'none',
+              transform: 'translateY(-0%)',
               background: 'none',
               cursor: 'pointer',
-              color: '#292728',
+              color: "blue", //'#292728'
               height: "20px",
               width:"10px",
+              
+             
              
                }}
             onClick={ShowConfirmpasswordClick}
             >
            {ShowConfirmpassword ? <IoEyeSharp style={{width:"30px", height:"30px"}}/> :  <IoEyeOffSharp style={{width:"30px", height:"30px"}} />}
-             </button>
-                
+             </button> 
+             </div>
+         
+            
+             
                  {/* <IoEyeSharp style={{position:"absolute", right:"42%", bottom:"28.5%"}}/> */}
-        </div> 
       </Container>
-     
+       
  
  
   </>

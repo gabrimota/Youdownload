@@ -1,4 +1,5 @@
 import { Container,  Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import React, { ChangeEvent, useState } from 'react';
 import RoutesApp from '@/routes'
 import Router from 'next/router'
@@ -12,13 +13,14 @@ import styles from '../../styles/home.module.scss';
 
 import IconAds from '../../../public/IconAds.png'
 import sair from '../../../public/sair.png'
+import { ImExit } from "react-icons/im";
 
 
-import Loja1 from '../../../public/loja1.png'
+
 //Importamos o Input que usamos na linha 28 e 34
  import {Input} from '../../components/ui/input';
 // Importamos o Button que usamos na linha 38
- import { Button } from '../../components/ui/button';
+ //import { Button } from '../../components/ui/button';
  // Importamos o BackGround 
  import {BackGround} from '../../components/ui/background'
 import { json } from 'stream/consumers';
@@ -29,23 +31,25 @@ export default function Download() {
   function ClickSave() {
     // o localStorage é um recurso do navegador para armazenar dados localmente no dispositivo do usuário esses dados persistam mesmo após o fechamento e reabertura do navegador.
     // aqui o savedclicks recebe o valor armazenado no localStorage.getItem da chave @PlayListClicks
+    // caso não tiver a chave "@PlayListClicks" não tiver nenhum valor associado no localStorage o getItem(recupera um valor associado a chave) ira retornar nulo
+    // Se houver um valor associado à chave especificada (@PlayListClicks) a função getItem retorna esse valor como uma string.
     const savedclicks = localStorage.getItem("@PlayListClicks");
     // aqui o a var clicksave inicializa como um array do tipo string vazio ( ele vai receber a string "ja usado" sinalizando que o usuario já deu o click)
     let clicksave: String[] = [];
-    // vejo se existe algo dentro do savedclicks
+    // vejo se existe algo dentro do savedclicks , só vai executar se for diferente de null porque deve existir um valor à chave "@PlayListClicks" 
     if (savedclicks) {
-       // aqui o clicksave recebe o JSON.parse que converte o contéudo String JSON do savedclicks para o formato do String do Javascript(seguindo a lógica se ele entrar nesse if é pq o usuario já utilizou o download então o clicksave já vai ter recebido o "ja usado" q já está no formato JSON então o parse transforma ele em javascript novamente)
-       // JSON.parse() é usado para converter a string de volta para um array quando é recuperada do localStorage.
+       // aqui o clicksave recebe o JSON.parse que converte o contéudo String JSON do savedclicks para o formato  do Javascript
+       // JSON.parse() é usado para converter a string de volta para um array(clicksave) quando é recuperada do localStorage.
+       // esse if garante que o clicksave não seja atribuído com um valor inválido quando não há dados salvos no localStorage
        clicksave = JSON.parse(savedclicks);
         
     }
-    // aqui o hasclick recebe o clicksave.some que verifica se o array clicksave tem o valor  "ja usado" se sim ele retorna um true se não um false
-    // o some verifica se tem pelo menos um elemento no array que seja igual ao "ja usado"( verifica se satisfaz uma condição)
+    // aqui o hasclick recebe o clicksave.some(serve para verificar) que verifica se o array clicksave tem o valor  "ja usado" se sim ele retorna um true se não um false ( verifica se satisfaz uma condição)
     // (click) é uma declaração de parâmetro da função de seta, sempre que a função for chamada(click) espera receber um valor que pode ser "Ja usado" ou não ai comparamos o valor do parâmetro click com a string "ja usado"
     const hasclick = clicksave.some((click) => click === "ja usado");
     // vejo se tem algo dentro do hasclick(que vai ser true ou false) se sim ele entra no if e mostra o alert
     // verifica se existe algo no hasclick (se tiver um true quer dizer q o usuario já fez download e aparece o alert se não ele vai para o clicksave.push que vai pegar o calor de clickButton que é "ja usado")
-    if (hasclick) {
+    if (hasclick === true) {
       // mostra pro usuario que ele já fez 1 download e tem q pagar 
         alert("Pague para usar novamente");
         // leva até a pagina Store
@@ -103,7 +107,7 @@ export default function Download() {
         <title>Youdownload - Download Video</title>
       </Head>
      
-        <Button 
+        {/* <Button 
         type='submit' 
         style={{
           width:"2%", 
@@ -120,7 +124,21 @@ export default function Download() {
               height:"60px",
               paddingRight:"0%"}}>
               </Image>
-        </Button>   
+        </Button>    */}
+        <ImExit 
+        type='submit' 
+        style={{
+          width:"2%", 
+          height:"5%", 
+          marginTop:"1%",
+          position:"absolute",
+          backgroundColor:"red",
+          color:"black", 
+          right:"4%", }} 
+          onClick={ButtonLoginExit} >
+            
+          </ImExit> 
+
         <Button 
         type='submit'
          style={{
@@ -129,6 +147,7 @@ export default function Download() {
            position:"absolute",
             marginRight:"8%", 
             backgroundColor:"red",
+            borderColor:"red",
            right:"80px"}}
             onClick={ButtonRemovaAds}>
           <Image 
@@ -159,7 +178,7 @@ export default function Download() {
             onChange={(e) => setVideo(e.target.value)}
             />
 
-            <Button 
+            {/* <Button 
             type="submit"  
             loading={false} 
             style={{ 
@@ -171,8 +190,20 @@ export default function Download() {
               }} >
             
              Download
-            </Button>
+            </Button> */}
+             <Button 
+            type="submit"  
+            style={{ 
+              borderColor: "#FF3F4B",
+              backgroundColor:"#FF3F4B",
+              height: "60px", 
+              fontSize:"1.5rem", 
+              width: "200px",  
+              marginBottom:"10%",
+              }} >
             
+             Download
+            </Button> 
            
            
           </Form>
@@ -187,7 +218,7 @@ export default function Download() {
             onChange={(e) => setPlayListVideo(e.target.value)}
             />
            <div className={styles.button}>
-            <Button 
+            {/* <Button 
             type="submit" 
              loading={false}
               style={{ 
@@ -198,7 +229,19 @@ export default function Download() {
                  onClick={ClickSave}   
                     >
              Download
-            </Button>
+            </Button> */}
+             <Button 
+            type="submit" 
+            
+              style={{ 
+                height: "60px", 
+                fontSize:"1.5rem", 
+                width: "200px", 
+                 }} 
+                 onClick={ClickSave}   
+                    >
+             Download
+            </Button> 
             </div>
          </Form>
           

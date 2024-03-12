@@ -13,7 +13,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa6";
-
+import { ImExit } from "react-icons/im";
 //Importamos o Input 
  import {Input} from '../../components/ui/input';
 // Importamos o Button 
